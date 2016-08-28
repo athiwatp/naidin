@@ -1,3 +1,4 @@
+// model
 var model = {
     cart : [],
     products : [
@@ -53,6 +54,7 @@ var model = {
     ]
 };
 
+// init instance
 new Vue({
     el: '#app',
     data: model,
@@ -85,8 +87,17 @@ new Vue({
     }
 })
 
+
+// calculate summary for all item in cart
 function calculateSummary(refCart){
     var cartList = JSON.parse(JSON.stringify(refCart));
+
+    // just in case
+    // if it's has non harry potter book catch it here
+    // loop to check if item[index].id is not harry then remove it from cartList and sum all amount
+    // then return calculateSummary(cartList) + 100*sumAmount and when carList have only harry potter it'll' pass this section to another promotion below
+
+    // harry potter promotion below
     if(cartList.length == 2){
         cartList = cutAllItem(cartList);
         return calculateSummary(cartList) + 100*2*0.9;
@@ -111,8 +122,12 @@ function calculateSummary(refCart){
     } else {
         return 0;
     }
+
+    // other promotion
+    // --  --
 }
 
+// Cut all item amount by 1 if the amount is zero remove the item from cartList
 function cutAllItem(refCart){
     var cartList = JSON.parse(JSON.stringify(refCart));
     for(var i = 0 ; i < cartList.length; i++){
