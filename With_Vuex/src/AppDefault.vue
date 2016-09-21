@@ -26,6 +26,9 @@
 import Hello from './components/Hello'
 
 export default {
+  data : function () {
+    products: []
+  },
   components: {
     Hello
   }

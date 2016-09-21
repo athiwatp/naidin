@@ -1,5 +1,5 @@
 <template>
-    <section class="container">
+    <section id="home" class="container">
         <top-content :cart-items="cart"></top-content>
         <body-content :product-items="products" :action-add-to-cart="addProducts"></body-content>
     </section>
@@ -7,7 +7,7 @@
 
 <script>
 import * as actions from './vuex/actions'
-import { getAll } from './vuex/getters'
+import { getCart, getProduct } from './vuex/getters'
 import topContent from './components/TopContent'
 import bodyContent from './components/BodyContent'
 
@@ -18,9 +18,7 @@ export default {
   },
   ready: function () {
     this.init()
-  },
-  data: function () {
-    return this.getAll
+    document.getElementById('home').className += ' slideUp'
   },
   vuex: {
     actions: {
@@ -28,7 +26,8 @@ export default {
       addToCart: actions.addToCart
     },
     getters: {
-      getAll: getAll
+      cart: getCart,
+      products: getProduct
     }
   },
   methods: {

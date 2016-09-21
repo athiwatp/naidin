@@ -1,8 +1,8 @@
 <template>
-  <div>
-  <head-content text="Naidin Book Store"></head-content>
-  <router-view></router-view>
-</div>
+  <div id="myApp">
+    <head-content text="Naidin Book Store"></head-content>
+    <router-view transition-mode="out-in"></router-view>
+  </div>
 </template>
 
 <script>
@@ -64,5 +64,12 @@ hr.inside:after {
 
 .head-inside{
     margin-top: 0px;
+}
+
+.fade-transition {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave {
+  opacity: 0;
 }
 </style>

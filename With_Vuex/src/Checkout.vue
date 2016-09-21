@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section id="checkOut" class="container">
     <div class="col-sm-12 top-box">
       <cart-content :cart-items="cart"></cart-content>
     </div>
@@ -14,14 +14,12 @@ export default {
   components: {
     cartContent
   },
-  data: function () {
-    return {
-      cart: this.getCart
-    }
+  ready: function () {
+    document.getElementById('checkOut').className += ' slideUp'
   },
   vuex: {
     getters: {
-      getCart: getCart
+      cart: getCart
     }
   }
 }

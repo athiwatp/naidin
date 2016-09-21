@@ -4,6 +4,8 @@ import Home from './Home'
 import Checkout from './Checkout'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import { sync } from 'vuex-router-sync'
+import store from './vuex/store'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -25,8 +27,5 @@ router.redirect({
 })
 
 router.start(App, 'body')
-/* eslint-disable no-new */
-// new Vue({
-//   el: 'body',
-//   components: { App }
-// })
+
+sync(store, router)
